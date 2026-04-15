@@ -3,14 +3,15 @@
 Simple console-based JavaScript game where the player tries to guess a randomly generated number.
 
 ## 📁 Project Structure
+```
 number-guessing/
 │
 ├── index.html
 ├── README.md
 └── js/
-├── index.js
-└── logic.js
-
+    ├── index.js
+    └── logic.js
+```
 
 ## 🚀 How to Run
 
