@@ -9,40 +9,45 @@ const checkGuess = (guess, secret) => {
 };
 
 const getPlayerGuess = () => {
-    const input = prompt("Enter a guess (1-100):");
 
-    if (input === null) return null;
+    while (true) {
+        const input = prompt("Enter a guess (1-100):");
 
-    const trimmed = input.trim();
+        if (input === null) {
+            alert("⛔ The Evil AI won't let you quit that easily! Please enter a number");
+            continue; 
+        }
+        const trimmed = input.trim();
 
-    if (trimmed === "") {
-        alert("⛔ Empty input is not allowed");
-        return getPlayerGuess();
+        if (trimmed === "") {
+            alert("⛔ Empty input is not allowed");
+            continue;
+        }
+        const num = Number(trimmed);
+
+        if (!Number.isInteger(num) || num < 1 || num > 100) {
+            alert("⛔ Enter a whole number between 1 and 100");
+            continue;
+        }
+
+        return num;
     }
-
-    const num = Number(trimmed);
-
-    if (!Number.isInteger(num) || num < 1 || num > 100) {
-        alert("⛔ Enter a whole number between 1 and 100");
-        return getPlayerGuess();
-    }
-
-    return num;
 };
 
 const askNewGame = () => {
-    const input = prompt("Start a new game? (y/n)");
+    while (true) {
+        const input = prompt("Start a new game? (y/n)");
 
-    if (input === null) return "n";
+        if (input === null) return "n";
 
-    const answer = input.trim().toLowerCase();
+        const answer = input.trim().toLowerCase();
 
-    if (answer !== "y" && answer !== "n") {
+        if (answer === "y" || answer === "n") {
+            return answer;
+        }
+
         alert("⛔ Type only 'y' or 'n'");
-        return askNewGame();
     }
-
-    return answer;
 };
 
 let totalScore = 0;
@@ -53,37 +58,32 @@ const playSingleGame = () => {
 
     while (attempts < 10) {
         const guess = getPlayerGuess();
-
-        if (guess === null) {
-            console.log("Game cancelled");
-            return false;
-        }
-
+        attempts++;
         const result = checkGuess(guess, secret);
 
         alert(result);
 
         if (result === "Correct! You got it!") {
-            const score = Math.max(0, 100 - attempts * 10);
+            const score = Math.max(0, 100 - (attempts - 1) * 10);
             totalScore += score;
 
             console.log(
-              `🎉 Attempts: ${attempts + 1} | Score: ${score} | Total: ${totalScore}`
+              `🎉 Attempts: ${attempts} | Score: ${score} | Total Score: ${totalScore}`
             );
             return true;
         }
-
-        attempts++;
+        
+        console.log(`Attempt ${attempts}/10: ${result}`);
     }
 
-    alert(`💀 Game over! Number was ${secret}`);
+    alert(`💀 Game over! The secret number was ${secret}`);
     return true;
 };
 
-export const startGame = () => {
+const startGame = () => {
     console.clear();
     console.log("🎯 Number Guessing Game started!");
-    console.log("👉 Or type startGuessingGame() anytime to restart\n");
+    console.log("👉 Follow the prompts to play.\n");
 
     while (true) {
         const finished = playSingleGame();
@@ -92,10 +92,11 @@ export const startGame = () => {
 
         const again = askNewGame();
         if (again !== "y") {
-            console.log("Thanks for playing!");
+            console.log("Thanks for playing! Final Score: " + totalScore);
             break;
         }
     }
 };
 
 window.startGuessingGame = startGame;
+startGame();
