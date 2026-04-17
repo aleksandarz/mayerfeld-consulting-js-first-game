@@ -1,5 +1,7 @@
 # Number Guessing Game
 
+🚀 **Live Demo:** [Play the game](https://mayerfeld-consulting-js-first-game.vercel.app/)
+
 Simple console-based JavaScript game where the player tries to guess a randomly generated number.
 
 ## 📁 Project Structure
