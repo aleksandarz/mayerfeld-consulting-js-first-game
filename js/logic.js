@@ -9,20 +9,21 @@ const checkGuess = (guess, secret) => {
 };
 
 const getPlayerGuess = () => {
-
     while (true) {
         const input = prompt("Enter a guess (1-100):");
 
         if (input === null) {
-            alert("⛔ The Evil AI won't let you quit that easily! Please enter a number");
+            alert("⛔ The Evil AI won't let you quit that easily! Please enter a number to continue.");
             continue; 
         }
+
         const trimmed = input.trim();
 
         if (trimmed === "") {
             alert("⛔ Empty input is not allowed");
             continue;
         }
+
         const num = Number(trimmed);
 
         if (!Number.isInteger(num) || num < 1 || num > 100) {
@@ -58,6 +59,7 @@ const playSingleGame = () => {
 
     while (attempts < 10) {
         const guess = getPlayerGuess();
+        
         attempts++;
         const result = checkGuess(guess, secret);
 
@@ -92,7 +94,7 @@ const startGame = () => {
 
         const again = askNewGame();
         if (again !== "y") {
-            console.log("Thanks for playing! Final Score: " + totalScore);
+            console.log("Thanks for playing! Final Total Score: " + totalScore);
             break;
         }
     }
