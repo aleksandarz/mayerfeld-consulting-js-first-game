@@ -35,7 +35,7 @@ export const getPlayerGuess = () => {
     }
 };
 
-const askNewGame = () => {
+export const askNewGame = () => {
     while (true) {
         const input = prompt("Start a new game? (y/n)");
 
