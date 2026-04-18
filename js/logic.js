@@ -1,14 +1,14 @@
-const generateRandomNumber = () => {
+export const generateRandomNumber = () => {
     return Math.floor(Math.random() * 100) + 1;
 };
 
-const checkGuess = (guess, secret) => {
+export const checkGuess = (guess, secret) => {
     if (guess < secret) return "Too low! Try again.";
     if (guess > secret) return "Too high! Try again.";
     return "Correct! You got it!";
 };
 
-const getPlayerGuess = () => {
+export const getPlayerGuess = () => {
     while (true) {
         const input = prompt("Enter a guess (1-100):");
 
@@ -82,7 +82,7 @@ const playSingleGame = () => {
     return true;
 };
 
-const startGame = () => {
+export const startGame = () => {
     console.clear();
     console.log("🎯 Number Guessing Game started!");
     console.log("👉 Follow the prompts to play.\n");
@@ -99,6 +99,3 @@ const startGame = () => {
         }
     }
 };
-
-window.startGuessingGame = startGame;
-startGame();
