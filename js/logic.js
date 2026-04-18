@@ -112,6 +112,7 @@ function gameStart() {
 
     else {
         console.log("Game exited.");
+        alert("Maybe next time! Goodbye!");
     }
 }
 
