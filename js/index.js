@@ -1,3 +1,3 @@
-import { startGame } from "./logic.js";
+import { askNewGame } from "./logic.js";
 
-startGame();
+askNewGame();
