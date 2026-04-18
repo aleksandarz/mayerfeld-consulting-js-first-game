@@ -13,7 +13,7 @@ export const getPlayerGuess = () => {
         const input = prompt("Enter a guess (1-100):");
 
         if (input === null) {
-            alert("⛔ The Evil AI won't let you quit that easily! Please enter a number to continue.");
+            alert("⛔ The Evil AI won't let you quit that easily! Please enter a number to continue");
             continue; 
         }
 
