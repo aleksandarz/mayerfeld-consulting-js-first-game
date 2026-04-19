@@ -98,6 +98,7 @@ const startGame = () => {
         const again = askNewGame();
         if (again !== "y") {
             console.log("Thanks for playing! Final Total Score: " + totalScore);
+            alert("Thanks for playing! Final Total Score: " + totalScore);
             break;
         }
     }
